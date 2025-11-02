@@ -12,10 +12,10 @@ public class Test3 {
 
     public static void main(String[] args) {
 
-        String cle =  System.getenv("GEMINI_KEY");
+        String llmKey =  System.getenv("GEMINI_KEY");
 
         GoogleAiEmbeddingModel modele = GoogleAiEmbeddingModel.builder()
-                .apiKey(cle)
+                .apiKey(llmKey)
                 .modelName("text-embedding-004")
                 .taskType(TaskType.SEMANTIC_SIMILARITY)
                 .outputDimensionality(300)

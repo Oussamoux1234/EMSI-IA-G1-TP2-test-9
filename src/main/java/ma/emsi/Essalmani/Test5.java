@@ -65,14 +65,7 @@ public class Test5 {
 
         // --- Démarrer la conversation ---
         // On appelle la nouvelle méthode pour la boucle de conversation
-        conversationAvec(assistant);
-    }
-
-    /**
-     * Gère la boucle de conversation avec l'assistant dans la console.
-     * @param assistant L'assistant IA configuré.
-     */
-    private static void conversationAvec(Assistant assistant) {
+        //conversationAvec(assistant);
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 System.out.println("==================================================");
@@ -96,5 +89,7 @@ public class Test5 {
                 System.out.println("Assistant : " + reponse);
             }
         }
+
     }
+
 }

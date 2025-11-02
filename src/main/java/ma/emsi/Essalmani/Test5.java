@@ -27,7 +27,6 @@ public class Test5 {
 
     // Assistant conversationnel
     interface Assistant {
-        // Prend un message de l'utilisateur et retourne une réponse du LLM.
         String chat(String userMessage);
     }
 
@@ -36,26 +35,24 @@ public class Test5 {
 
         ChatModel model = GoogleAiGeminiChatModel.builder()
                 .apiKey(llmKey)
-                .modelName("gemini-2.5-flash") // J'ai mis 1.5-flash, gemini-2.5-flash n'existe pas encore
+                .modelName("gemini-2.5-flash")
                 .temperature(0.3)
                 .timeout(Duration.ofSeconds(60))
                 .responseFormat(ResponseFormat.TEXT)
                 .build();
 
-        // --- Chargement du PDF ---
-        // Assurez-vous que ce nom correspond au PDF que vous avez placé à la racine du projet
+
         String nomDocument = "ml.pdf";
 
-        // Utilisez le Tika parser pour lire le PDF
+
         Document document = FileSystemDocumentLoader.loadDocument(nomDocument, new ApacheTikaDocumentParser());
 
         EmbeddingStore<TextSegment> embeddingStore = new InMemoryEmbeddingStore<>();
 
-        // Le Ingestor va automatiquement découper le document en morceaux (chunks)
-        // et générer les embeddings pour chaque morceau avant de les stocker.
+
         EmbeddingStoreIngestor.ingest(document, embeddingStore);
 
-        // Création de l'assistant
+
         Assistant assistant =
                 AiServices.builder(Assistant.class)
                         .chatModel(model)
@@ -63,9 +60,7 @@ public class Test5 {
                         .contentRetriever(EmbeddingStoreContentRetriever.from(embeddingStore))
                         .build();
 
-        // --- Démarrer la conversation ---
-        // On appelle la nouvelle méthode pour la boucle de conversation
-        //conversationAvec(assistant);
+
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 System.out.println("==================================================");

@@ -35,7 +35,7 @@ public class Test4 {
         ChatModel model = GoogleAiGeminiChatModel.builder()
                 .apiKey(llmKey)
                 .modelName("gemini-2.5-flash")
-                .temperature(0.7)
+                .temperature(0.3)
                 .timeout(Duration.ofSeconds(60))
                 .responseFormat(ResponseFormat.TEXT)
                 .build();;

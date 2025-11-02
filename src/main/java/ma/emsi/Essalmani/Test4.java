@@ -1,6 +1,4 @@
 package ma.emsi.Essalmani;
-
-
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.loader.FileSystemDocumentLoader;
 import dev.langchain4j.data.segment.TextSegment;
@@ -59,7 +57,8 @@ public class Test4 {
                         .build();
 
         // Le LLM va utiliser l'information du fichier infos.txt pour répondre à la question.
-        String question = "Comment s'appelle le chat de Pierre ?";
+       // String question = "Pierre appelle son chat. Qu'est-ce qu'il pourrait dire ?";
+        String question = "Quelle est la capital de la France";
         // L'assistant recherche dans la base vectorielle les informations les plus pertinentes
         // pour répondre à la question, en comparant les embeddings de la base et celui de la question.
         // Ces informations sont ajoutées à la question et le tout est envoyé au LLM.

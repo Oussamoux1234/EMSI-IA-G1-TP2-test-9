@@ -42,6 +42,16 @@ public class Test3 {
         System.out.println("Similarité cosinus : " + similarite);
 
 
+        testerCouple(modele, "Je mange une pomme", "Je mange une banane");
+        testerCouple(modele, "Il fait beau aujourd’hui", "J’adore le chocolat");
+    }
 
+    private static void testerCouple(GoogleAiEmbeddingModel modele, String p1, String p2) {
+        Response<Embedding> r1 = modele.embed(p1);
+        Response<Embedding> r2 = modele.embed(p2);
+        double s = CosineSimilarity.between(r1.content(), r2.content());
+        System.out.println("\nPhrase 1 : " + p1);
+        System.out.println("Phrase 2 : " + p2);
+        System.out.println("Similarité cosinus : " + s);
     }
 }
